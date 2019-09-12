@@ -13,6 +13,7 @@ exports.up = function(knex) {
     .createTable('recipe_ingredients', tbl => {
         tbl.integer('recipe_id').unsigned().notNullable().references('id').inTable('recipes').onDelete('CASCADE').onUpdate('CASCADE');
         tbl.integer('ingredient_id').unsigned().notNullable().references('id').inTable('ingredients').onDelete('CASCADE').onUpdate('CASCADE');
+        tbl.decimal('quantity')
         tbl.primary(['recipe_id', 'ingredient_id']);
     })
 };

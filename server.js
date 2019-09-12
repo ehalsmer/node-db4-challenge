@@ -16,6 +16,20 @@ server.get('/api/recipes', (req, res) => {
 });
 
 server.get('/api/ingredients', (req, res) => {
+    db('ingredients')
+    .then(ingredients => {
+        res.status(200).json(ingredients)
+    })
+});
+
+server.get('/api/recipeingredients', (req, res) => {
+    db('recipe_ingredients')
+    .then(response => {
+        res.status(200).json(response)
+    })
+});
+
+server.get('/api/ingredients', (req, res) => {
     res.status(200).json({message: 'ingredients here'})
 });
 
