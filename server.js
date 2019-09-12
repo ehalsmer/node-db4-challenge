@@ -26,6 +26,13 @@ server.get('/api/shopping/:id', (req, res) => {
     })
 });
 
+server.get('/api/instructions/:id', (req, res) => {
+    Recipes.getInstructions(req.params.id)
+    .then(response => {
+        res.status(200).json(response)
+    })
+});
+
 server.get('/api/ingredients', (req, res) => {
     db('ingredients')
     .then(ingredients => {
