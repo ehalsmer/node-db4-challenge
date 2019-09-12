@@ -47,9 +47,4 @@ server.get('/api/recipeingredients', (req, res) => {
     })
 });
 
-server.get('/api/ingredients', (req, res) => {
-    res.status(200).json({message: 'ingredients here'})
-});
-
-
 module.exports = server;
