@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 
-// const db = require('./data/db-config.js');
+const db = require('./data/db-config.js');
 
 const server = express();
 
@@ -9,7 +9,10 @@ server.use(helmet());
 server.use(express.json());
 
 server.get('/api/recipes', (req, res) => {
-    res.status(200).json({message: 'recipes here'})
+    db('recipes')
+    .then(recipes => {
+        res.status(200).json(recipes)
+    })
 });
 
 server.get('/api/ingredients', (req, res) => {
